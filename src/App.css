@@ -5,8 +5,11 @@ Light Green #8EE4AF
 Bone #EDF5D1
 */
 
-h1,h2,h3,h4{
-  color: #EDF5D1;
+h1,
+h2,
+h3,
+h4 {
+  color: #edf5d1;
 }
 
 .container {
@@ -15,3 +18,4 @@ h1,h2,h3,h4{
   background-color: #379683;
   margin: 0 auto;
 }
+

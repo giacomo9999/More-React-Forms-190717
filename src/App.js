@@ -45,8 +45,12 @@ class App extends Component {
     return (
       <div className="container">
         <h1>App Component</h1>
-        <Users />
-        <AddUser />
+        <Users
+          allUsers={this.state.users}
+          pressEditBtn={this.pressEditBtn}
+          pressDelete={this.pressDelete}
+        />
+        <AddUser addUser={this.addUser} />
       </div>
     );
   }
