@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 
 class Users extends Component {
+  // call updateUser (App.js)
   handleUpdate = () => {
     this.props.updateUser(this.indexNum, this.name.value, this.age.value);
   };
 
   render() {
     const { allUsers, pressEditBtn, pressDelete } = this.props;
+
     const usersList = allUsers.map((user, index) => {
-      return (
+      return user.isEditing === true ? (
         <tr key={index}>
           <td>
             <input
@@ -19,6 +21,8 @@ class Users extends Component {
               required
               defaultValue={user.name}
             />
+          </td>
+          <td>
             <input
               type="number"
               ref={val => {
@@ -27,20 +31,41 @@ class Users extends Component {
               required
               defaultValue={user.age}
             />
+          </td>
+          <td>
             <input
               type="button"
               value="Update"
+              onClick={this.handleUpdate}
               ref={() => {
                 this.indexNum = index;
               }}
-              onClick={this.handleUpdate}
+              className="btn green"
             />
+          </td>
+        </tr>
+      ) : (
+        <tr key={index}>
+          <td>{user.name}</td>
+          <td>{user.age}</td>
+          <td>
+            <button
+              className="btn white black-text"
+              onClick={() => pressEditBtn(index)}
+            >
+              Edit
+            </button>{" "}
+            |{" "}
+            <button className="btn red" onClick={() => pressDelete(index)}>
+              Delete
+            </button>
           </td>
         </tr>
       );
     });
+
     return (
-      <table>
+      <table className="striped">
         <thead>
           <tr>
             <th>Name</th>

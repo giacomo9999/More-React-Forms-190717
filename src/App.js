@@ -37,8 +37,9 @@ class App extends Component {
 
   // (i) is received from Users.js
   pressDelete = i => {
+    console.log("Now Deleting..." + i);
     let users = this.state.users.filter((entry, index) => index !== i);
-    this.setState(users);
+    this.setState({ users });
   };
 
   render() {
@@ -49,6 +50,7 @@ class App extends Component {
           allUsers={this.state.users}
           pressEditBtn={this.pressEditBtn}
           pressDelete={this.pressDelete}
+          updateUser={this.updateUser}
         />
         <AddUser addUser={this.addUser} />
       </div>
